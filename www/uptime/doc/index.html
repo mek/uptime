@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>uptime postgres server</title>
+</head>
+<link rel=stylesheet type="text/css" href="/uptime.css">
+<body>
+<h2>uptime postgres server</h2>
+<hr>
+
+<table width="99%"> <tr> <td>
+<p>
+I added some code to check and make sure that the server can talk to the
+Internet before checking hosts.  
+<p>
+This is a postgres version of Uptime, which Arsdigita ran until
+June, 2001.  This <a href="http://openacs.org/bboard/q-and-a-fetch-msg.tcl?msg_id=0001tT&topic_id=11&topic=OpenACS">thread</a> over at <a href="http://www.openacs.org">OpenACS</a>'s forums started it.
+<p>
+
+I download the uptime source code from 
+<a href="http://www.arsdigita.com/free-tools/uptime.19990404.tar.gz">
+Arsdigita</a> and made a few changes and it currently is running
+at 
+
+<p>
+
+<a href="http://uptime.openacs.org">http://uptime.openacs.org</a>.
+
+<p>
+
+<a href="http://uptime.openacs.org/uptime/doc/uptime-current.tar.gz">Current Code</a> presently at versioin 0.1.
+
+<p>
+
+The following was done to make it work:
+<ul> 
+<li>Ported the data-model.sql to postgresql and grabbed to postgres.sql
+data model from the <a href="http://www.openacs.org">OpenACS</a> to 
+get some of the "oracle-isms" that are required.  <a href="http://uptime.openacs.org/uptime/doc/sql">SQL data models</a> currently in use.</li>
+<li>You need Phil G's <a href="http://www.arsdigita.com/books/panda/utilities.txt">utilites.tcl</a> for this to work.
+<li>I change the director structure around a bit, mainly so it was a bit
+more familar with it.  The private TCL library is no longer under
+the web root.</li>
+<li>Removed some of the "oracle-isms" from the .tcl code.  unique -> distinct.
+Changed all sysdate to sysdate(), etc.
+</ul>
+
+You also need <a href="http://aolserver.com">AOLserver</a> and <a href="http://www.postgresql.org">PostgreSQL</a>
+
+<p>
+
+A couple ideas for uptime (my own and from others):
+
+<ul>
+<li>Make the code more DB indepentant and create data models for Sybase,
+Adabas, etc.</li>
+<li>Distributed servers across multiple servers.  This would be quite
+an interesting hack.</li>
+</ul>
+
+</td><tr></table>
+<hr>
+
+<hr>
+<a href="http://www.alal.com/"><address>mkovach-uptime@alal.com</address></a>
+</body>
+</html>

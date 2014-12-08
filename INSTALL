@@ -1,0 +1,67 @@
+
+Uptime
+     _________________________________________________________________
+
+   Uptime Install Instructions
+     _________________________________________________________________
+
+   Installation Instructions
+
+    1. You must have AOLserver, Postgres, and nspostgres modules
+       installed.
+          + [1]AOLserver.
+          + [2]AOLserver downloads.
+          + [3]AOLserver4 Beta 8.
+          + [4]Postgres Driver for AOLserver 4
+          + [5]AOLserver 3 downloads (includes Postgres driver) from the
+            [6]OpenACS group.
+          + [7]PostgreSQL.
+       You can find AOLserver installation documentation from
+       [8]AOLserver or [9]OpenACS.
+    2. Grab the uptime distribution
+       [10]http://uptime.openacs.org/uptime/docs/
+    3. Decieded where you want to install the software, I use /web,
+       create the directory and extract the tar ball.
+# mkdir /web (as root)
+# chown nsadmin:web /web
+# chmod 700 /web
+# su - nsadmin
+nsadmin@uptime: cd /tmp
+nsadmin@uptime: wget http://uptime.openacs.org/uptime/doc/uptime-pg-current.tar
+.gz
+nsadmin@uptime: cd /web
+nsadmin@uptime: gzip -dc /tmp/uptime-pg-current.tar.gz| tar xvf -
+    4. Edit the following files:
+          + /web/uptime/etc/uptime.tcl
+          + /web/uptime/tcl/backup.tcl
+          + /web/uptime/tcl/uptime-defs.tcl
+    5. Create the postgres database
+# su - postgres
+postgres@uptime: createuser nsadmin (answer yes to both questions)
+postgres@uptime: exit
+# su - nsadmin
+nsadmin@uptime: createdb uptime
+nsadmin@uptime: psql -f /web/uptime/www/uptime/doc/sql/postgres.sql uptime
+nsadmin@uptime: psql -f /web/uptime/www/uptime/doc/sql/data-model.sql uptime
+
+   Start the AOLserver for uptime and everything should be running.
+
+   Included are some crontab entries uptime.crontab. You may choose to
+   use them if you want.
+     _________________________________________________________________
+
+   [11]uptime@alal.com 
+
+References
+
+   1. http://www.aolserver.com/
+   2. http://myturl.com/0001g
+   3. http://myturl.com/0001h
+   4. http://myturl.com/0001i
+   5. http://myturl.com/0001j
+   6. http://www.openacs.org/
+   7. http://www.postgresql.org
+   8. http://www.aolserver.com/docs/admin/install.html
+   9. http://openacs.org/doc/openacs-4-6-3/aolserver.html
+  10. http://uptime.openacs.org/uptime/doc/uptime-pg-current.tar.gz
+  11. mailto:uptime@alal.com

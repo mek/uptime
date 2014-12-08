@@ -1,0 +1,2 @@
+17 * * * * /usr/lib/postgresql/bin/vacuumdb --analyze uptime > /dev/null 2>&1
+0  0 * * * /web/uptime/bin/server_log_rotate 2>/dev/null 1>/dev/null

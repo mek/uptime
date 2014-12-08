@@ -1,0 +1,9 @@
+#!/bin/sh
+# Script to the server-log files (which fills up quickly)
+DATE=`date +%Y-%m-%d`
+LOGDIR=/web/uptime/logs
+mv ${LOGDIR}/server.log ${LOGDIR}/server.log-${DATE}
+## You need to send a SIGHUP to the aolserver process, I use 
+## daemontools so it is easy
+/usr/local/bin/svc -h /service/uptime
+exit 0
